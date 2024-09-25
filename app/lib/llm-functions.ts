@@ -1,6 +1,5 @@
 'use server'
 import { AssemblyAI } from 'assemblyai'
-import { promises as fs } from 'fs'
 import path from 'path'
 import { recognizedText } from "@/app/types/apptypes"
 

@@ -1,5 +1,4 @@
 "use client"
-
 import Link from "next/link"
 import { useRef, useState } from "react"
 import { identifyRecordedVoice } from "@/app/lib/llm-functions"
@@ -17,11 +16,11 @@ export default function Home() {
   const audioRef3 = useRef<HTMLAudioElement | null>(null)
 
   // Utilitites func.
-  const playAudio = (audioRef:any) => {
+  const playAudio = (audioRef:React.RefObject<HTMLAudioElement>) => {
     if (audioRef.current) {
       audioRef.current.play()
         .then(() => console.log("Reproduciendo..."))
-        .catch((error:any) => console.error("Error al reproducir:", error))
+        .catch((error) => console.error("Error al reproducir:", error))
     }
   }
 
@@ -42,6 +41,10 @@ export default function Home() {
   }
 
   const handleEntityIdentification = async () => {
+    if (!chosen) {
+      alert('Seleccione una grabación')
+      return
+    }
     setIsLoading(true);
     try {
     const result=await identifyRecordedVoice(chosen)
