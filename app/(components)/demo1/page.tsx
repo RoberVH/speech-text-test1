@@ -60,7 +60,7 @@ export default function Home() {
     <div className="mt-8 grid grid-rows-[10px_2fr_10px_40px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
        {isLoading && <Loading />}
       <ul className="space-y-4">
-      <h1 className="ml-32 font-bold text-lg">Grabaciones de Prueba</h1>
+      <h1 className="ml-32 font-bold text-lg">Reco Voz grabada (AssemblyAI API)</h1>
           <li className="pt-16 flex space-x-4">
               <button className="audio-button" onClick={()=> playAudio(audioRef1)}>Reproducir</button>              
             <span className={`w-[30rem] ${chosen==='demo1.mp3' ? 'font-bold' : null}`} onClick={()=>handleMsgSelections('1')}>
