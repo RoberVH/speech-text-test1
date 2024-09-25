@@ -17,7 +17,7 @@ export  const  identifyRecordedVoice  = async (selectedOption:string): Promise<r
         console.log('environement:', process.env.NODE_ENV)
         let audioFilePath
         if (process.env.NODE_ENV==='production') 
-           audioFilePath = `/${selectedOption}`
+           audioFilePath = `https://${process.env.VERCEL_URL}/${selectedOption}`
           else
            audioFilePath = path.join(process.cwd(), 'public', selectedOption)
         console.log('input file to process: ', audioFilePath)
