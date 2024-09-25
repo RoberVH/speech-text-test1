@@ -14,12 +14,15 @@ export  const  identifyRecordedVoice  = async (selectedOption:string): Promise<r
 
     try {
         // Lee el archivo de audio
-        console.log('input file received: ', selectedOption)
-        const audioFilePath = path.join(process.cwd(), 'public', selectedOption)
+        console.log('environement:', process.env.NODE_ENV)
+        let audioFilePath
+        if (process.env.NODE_ENV==='production') 
+           audioFilePath = `/${selectedOption}`
+          else
+           audioFilePath = path.join(process.cwd(), 'public', selectedOption)
         console.log('input file to process: ', audioFilePath)
-        //const audioBuffer = await fs.readFile(audioFilePath);
-    
-         // Prepara los parámetros para AssemblyAI
+
+        // Prepara los parámetros para AssemblyAI
         const params = {
           audio: audioFilePath,
           entity_detection: true,
