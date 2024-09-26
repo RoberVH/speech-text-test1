@@ -11,15 +11,29 @@ export  const  identifyRecordedVoice  = async (selectedOption:string): Promise<r
       })
 
   const recognizedText:recognizedText[] = []
-
+     let fileAddress
+    switch (selectedOption) {
+    case 'demo1.mp3':
+        fileAddress="3ZkE5S3XZiGSgjstTRBwuqBdDJwiiYEupyr1GhdUBU8X"
+        break
+    case 'demo2.mp3':
+      fileAddress="9wswSURGMsjFQXZkZbF8GzpJd4XmCuw5YgHBf6CLZjRT"
+      break
+    case 'demo3.mp3':
+      fileAddress="EFgMZBmajA95S9ibSeD6GoABNPbPjdi2mv6PXgwZRqAu"
+      break
+    default:
+        fileAddress="3ZkE5S3XZiGSgjstTRBwuqBdDJwiiYEupyr1GhdUBU8X"
+    }
     try {
         // Lee el archivo de audio
         console.log('environement:', process.env.NODE_ENV)
         let audioFilePath
         if (process.env.NODE_ENV==='production') 
-           audioFilePath = `https://${process.env.VERCEL_URL}/${selectedOption}`
+          audioFilePath = `https://devnet.irys.xyz/${fileAddress}`
           else
-           audioFilePath = path.join(process.cwd(), 'public', selectedOption)
+            audioFilePath = path.join(process.cwd(), 'public', selectedOption)
+
         console.log('input file to process: ', audioFilePath)
 
         // Prepara los parámetros para AssemblyAI
